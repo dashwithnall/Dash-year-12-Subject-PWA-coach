@@ -1,0 +1,125 @@
+{
+  "name": "Dash Year 12 Subject Sync",
+  "description": "Folder synchronization configuration for school subjects to Google Drive",
+  "version": "1.0.0",
+
+  "google_drive": {
+    "base_path": "/Users/dashielwithnall/My Drive/Dash-Claude-Builds",
+    "app_folder": "subject-coach",
+    "sync_interval_minutes": 15,
+    "conflict_resolution": "latest_wins"
+  },
+
+  "subjects": [
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "local_paths": [
+        "~/School/Engineering",
+        "~/Documents/Year12/Engineering"
+      ],
+      "drive_path": "subjects/engineering",
+      "file_types": ["pdf", "docx", "pptx", "xlsx", "jpg", "png", "mp4"],
+      "sync_enabled": true,
+      "notes": "Civil structures, machines, materials science"
+    },
+    {
+      "id": "philosophy",
+      "name": "Philosophy & Reason",
+      "local_paths": [
+        "~/School/Philosophy",
+        "~/Documents/Year12/Philosophy"
+      ],
+      "drive_path": "subjects/philosophy",
+      "file_types": ["pdf", "docx", "pptx", "txt", "md"],
+      "sync_enabled": true,
+      "notes": "Ethics, political philosophy, reasoning"
+    },
+    {
+      "id": "maths-methods",
+      "name": "Mathematical Methods",
+      "local_paths": [
+        "~/School/Maths-Methods",
+        "~/School/Maths",
+        "~/Documents/Year12/Maths"
+      ],
+      "drive_path": "subjects/maths-methods",
+      "file_types": ["pdf", "docx", "pptx", "xlsx", "py", "ipynb"],
+      "sync_enabled": true,
+      "notes": "Calculus, algebra, functions, statistics"
+    },
+    {
+      "id": "english",
+      "name": "General English",
+      "local_paths": [
+        "~/School/English",
+        "~/Documents/Year12/English"
+      ],
+      "drive_path": "subjects/english",
+      "file_types": ["pdf", "docx", "pptx", "txt", "epub"],
+      "sync_enabled": true,
+      "notes": "Literary analysis, media texts, Australian literature"
+    },
+    {
+      "id": "study-of-religion",
+      "name": "Study of Religion",
+      "local_paths": [
+        "~/School/Study-of-Religion",
+        "~/School/SOR",
+        "~/Documents/Year12/Religion"
+      ],
+      "drive_path": "subjects/study-of-religion",
+      "file_types": ["pdf", "docx", "pptx", "mp3", "mp4"],
+      "sync_enabled": true,
+      "notes": "World religions, ethics, sacred texts"
+    },
+    {
+      "id": "business-diploma",
+      "name": "Business Diploma",
+      "local_paths": [
+        "~/School/Business-Diploma",
+        "~/School/Business",
+        "~/Documents/Year12/Business"
+      ],
+      "drive_path": "subjects/business-diploma",
+      "file_types": ["pdf", "docx", "pptx", "xlsx", "csv"],
+      "sync_enabled": true,
+      "notes": "BSB50120 VET qualification"
+    }
+  ],
+
+  "app_data": {
+    "quiz_data": {
+      "local_path": "./curriculum",
+      "drive_path": "app-data/curriculum",
+      "sync_direction": "bidirectional"
+    },
+    "user_progress": {
+      "local_path": "./data/progress",
+      "drive_path": "app-data/progress",
+      "sync_direction": "upload_only"
+    },
+    "coaching_history": {
+      "local_path": "./data/coaching",
+      "drive_path": "app-data/coaching",
+      "sync_direction": "upload_only"
+    }
+  },
+
+  "exclude_patterns": [
+    "*.tmp",
+    "*.temp",
+    ".DS_Store",
+    "Thumbs.db",
+    "~$*",
+    "*.swp",
+    ".git/**",
+    "node_modules/**"
+  ],
+
+  "notifications": {
+    "on_sync_complete": true,
+    "on_conflict": true,
+    "on_error": true
+  }
+}
