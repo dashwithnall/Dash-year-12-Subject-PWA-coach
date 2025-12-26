@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Year 12 Subject Coach - Project Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --accent: #4a90e2;
+            --accent-glow: rgba(74, 144, 226, 0.4);
+            --engineering: #FF6B6B;
+            --philosophy: #4ECDC4;
+            --maths: #45B7D1;
+            --english: #96CEB4;
+            --religion: #9B59B6;
+            --business: #F39C12;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background orbs */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(74, 144, 226, 0.3), transparent);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(155, 89, 182, 0.3), transparent);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.2), transparent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(0, 50px) scale(0.9); }
+            75% { transform: translate(-50px, -25px) scale(1.05); }
+        }
+
+        /* Glass card styling */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent), #9b59b6);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #a8d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .hero-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title .icon {
+            font-size: 1.5rem;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .subject-card {
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .subject-card .subject-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .subject-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .subject-card .subject-type {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .subject-card.engineering { border-top: 3px solid var(--engineering); }
+        .subject-card.philosophy { border-top: 3px solid var(--philosophy); }
+        .subject-card.maths { border-top: 3px solid var(--maths); }
+        .subject-card.english { border-top: 3px solid var(--english); }
+        .subject-card.religion { border-top: 3px solid var(--religion); }
+        .subject-card.business { border-top: 3px solid var(--business); }
+
+        /* Architecture Section */
+        .architecture-section {
+            margin-bottom: 3rem;
+        }
+
+        .arch-diagram {
+            padding: 2rem;
+            overflow-x: auto;
+        }
+
+        .arch-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            min-width: 600px;
+        }
+
+        .arch-row {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .arch-box {
+            padding: 1rem 1.5rem;
+            background: rgba(74, 144, 226, 0.2);
+            border: 1px solid rgba(74, 144, 226, 0.4);
+            border-radius: 12px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .arch-box.highlight {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.3), rgba(155, 89, 182, 0.3));
+            border-color: var(--accent);
+        }
+
+        .arch-box .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.25rem;
+        }
+
+        .arch-box .title {
+            font-weight: 600;
+        }
+
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .arch-arrow.vertical {
+            transform: rotate(90deg);
+        }
+
+        /* Features List */
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+        }
+
+        .feature-item .check {
+            color: #2ecc71;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Timeline / How it Works */
+        .timeline-section {
+            margin-bottom: 3rem;
+        }
+
+        .timeline {
+            padding: 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1.25rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .tech-item:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item .name {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .info-grid,
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .arch-flow {
+                min-width: 100%;
+            }
+
+            .arch-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero glass">
+            <div class="hero-badge">Year 12 • Nudgee College Queensland</div>
+            <h1>Dash Year 12<br>Subject Coach</h1>
+            <p class="hero-subtitle">
+                An offline-first Progressive Web App with AI coaching powered by MCP servers.
+                Learn your QCAA curriculum anywhere, anytime—even without internet.
+            </p>
+            <div class="hero-tags">
+                <span class="hero-tag">📱 PWA</span>
+                <span class="hero-tag">🤖 AI Coaching</span>
+                <span class="hero-tag">📊 Progress Tracking</span>
+                <span class="hero-tag">🔄 Spaced Repetition</span>
+                <span class="hero-tag">☁️ Cloud Sync</span>
+            </div>
+        </header>
+
+        <!-- What It Does -->
+        <section class="info-grid">
+            <div class="info-card glass">
+                <div class="icon">📝</div>
+                <h3>Smart Quizzes</h3>
+                <p>Bite-sized quiz sessions with immediate feedback, multiple question types, and explanations grounded in the QCAA syllabus.</p>
+            </div>
+            <div class="info-card glass">
+                <div class="icon">🧠</div>
+                <h3>AI Tutoring</h3>
+                <p>Socratic method coaching via MCP servers. The AI adapts to your learning progress and guides you through difficult concepts.</p>
+            </div>
+            <div class="info-card glass">
+                <div class="icon">📈</div>
+                <h3>Progress Analytics</h3>
+                <p>Track mastery levels per topic, maintain study streaks, and get personalized recommendations for areas needing improvement.</p>
+            </div>
+            <div class="info-card glass">
+                <div class="icon">🔁</div>
+                <h3>Spaced Repetition</h3>
+                <p>SM-2 algorithm schedules reviews at optimal intervals, ensuring long-term retention for your exams.</p>
+            </div>
+            <div class="info-card glass">
+                <div class="icon">📴</div>
+                <h3>Offline First</h3>
+                <p>Complete quizzes without internet. Your progress syncs automatically when you're back online.</p>
+            </div>
+            <div class="info-card glass">
+                <div class="icon">🔔</div>
+                <h3>Smart Reminders</h3>
+                <p>Push notifications for study reminders, streak maintenance, and achievement celebrations.</p>
+            </div>
+        </section>
+
+        <!-- Subjects -->
+        <section>
+            <h2 class="section-title"><span class="icon">📚</span> Your 6 Subjects</h2>
+            <div class="subjects-grid">
+                <div class="subject-card glass engineering">
+                    <div class="subject-icon">⚙️</div>
+                    <h4>Engineering</h4>
+                    <span class="subject-type">General</span>
+                </div>
+                <div class="subject-card glass philosophy">
+                    <div class="subject-icon">🧠</div>
+                    <h4>Philosophy & Reason</h4>
+                    <span class="subject-type">General</span>
+                </div>
+                <div class="subject-card glass maths">
+                    <div class="subject-icon">🔢</div>
+                    <h4>Maths Methods</h4>
+                    <span class="subject-type">General</span>
+                </div>
+                <div class="subject-card glass english">
+                    <div class="subject-icon">📖</div>
+                    <h4>General English</h4>
+                    <span class="subject-type">General</span>
+                </div>
+                <div class="subject-card glass religion">
+                    <div class="subject-icon">⛪</div>
+                    <h4>Study of Religion</h4>
+                    <span class="subject-type">General</span>
+                </div>
+                <div class="subject-card glass business">
+                    <div class="subject-icon">💼</div>
+                    <h4>Business Diploma</h4>
+                    <span class="subject-type">VET</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="timeline-section">
+            <h2 class="section-title"><span class="icon">🚀</span> How It Works</h2>
+            <div class="timeline glass">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h4>Open the PWA on Your Phone</h4>
+                        <p>Install from your browser to the home screen. Works on iOS, Android, and desktop. The app is always available, even offline.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h4>Pick a Subject & Start Learning</h4>
+                        <p>Choose from your 6 Year 12 subjects. Each has 4 units aligned with the QCAA syllabus, broken into digestible topics.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h4>Take Quick Quizzes</h4>
+                        <p>5-minute quiz sessions with multiple choice, fill-in-blank, and matching questions. Get instant feedback and explanations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h4>Chat with the AI Coach</h4>
+                        <p>Stuck on a concept? The MCP-powered AI tutor uses Socratic questioning to guide you to understanding without just giving answers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h4>Track Your Progress</h4>
+                        <p>View mastery levels per topic, maintain your study streak, and see what the spaced repetition algorithm recommends you review next.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="architecture-section">
+            <h2 class="section-title"><span class="icon">🏗️</span> System Architecture</h2>
+            <div class="arch-diagram glass">
+                <div class="arch-flow">
+                    <div class="arch-row">
+                        <div class="arch-box highlight">
+                            <div class="label">Frontend</div>
+                            <div class="title">📱 PWA (SvelteKit)</div>
+                        </div>
+                    </div>
+
+                    <div class="arch-arrow vertical">↕️</div>
+
+                    <div class="arch-row">
+                        <div class="arch-box">
+                            <div class="label">Local Storage</div>
+                            <div class="title">💾 IndexedDB</div>
+                        </div>
+                        <div class="arch-box">
+                            <div class="label">Caching</div>
+                            <div class="title">⚡ Service Worker</div>
+                        </div>
+                        <div class="arch-box">
+                            <div class="label">Sync</div>
+                            <div class="title">🔄 Background Sync</div>
+                        </div>
+                    </div>
+
+                    <div class="arch-arrow vertical">↕️</div>
+
+                    <div class="arch-row">
+                        <div class="arch-box">
+                            <div class="label">MCP Server</div>
+                            <div class="title">📚 Curriculum</div>
+                        </div>
+                        <div class="arch-box">
+                            <div class="label">MCP Server</div>
+                            <div class="title">🤖 AI Coach</div>
+                        </div>
+                        <div class="arch-box">
+                            <div class="label">MCP Server</div>
+                            <div class="title">📊 Progress</div>
+                        </div>
+                    </div>
+
+                    <div class="arch-arrow vertical">↕️</div>
+
+                    <div class="arch-row">
+                        <div class="arch-box highlight">
+                            <div class="label">Cloud</div>
+                            <div class="title">☁️ Firebase / Google Drive</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Checklist -->
+        <section>
+            <h2 class="section-title"><span class="icon">✨</span> Key Features</h2>
+            <div class="glass features-list">
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Offline-first architecture with service workers</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>QCAA 2025 syllabus aligned curriculum</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>SM-2 spaced repetition for long-term retention</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>AI coaching with MCP protocol integration</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Multiple question types (MCQ, fill-blank, matching)</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Immediate feedback with explanations</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Topic-level mastery tracking</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Study streak gamification</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Push notification reminders</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Google Drive folder synchronization</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>SQLite database for curriculum data</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span>Mobile-first responsive design</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2 class="section-title"><span class="icon">🛠️</span> Tech Stack</h2>
+            <div class="glass tech-grid">
+                <div class="tech-item">
+                    <div class="icon">⚡</div>
+                    <div class="name">SvelteKit</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">📦</div>
+                    <div class="name">Workbox</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">💾</div>
+                    <div class="name">IndexedDB</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🔥</div>
+                    <div class="name">Firebase</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🤖</div>
+                    <div class="name">Claude AI</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🔌</div>
+                    <div class="name">MCP Servers</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🗄️</div>
+                    <div class="name">SQLite</div>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">📊</div>
+                    <div class="name">Chart.js</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">📚 Dash Year 12 Subject Coach</div>
+            <p>Built for Year 12 at St Joseph's Nudgee College, Queensland</p>
+            <p style="margin-top: 0.5rem;">QCAA 2025 Curriculum • Offline-First PWA • AI-Powered Learning</p>
+            <div class="footer-links">
+                <a href="https://www.qcaa.qld.edu.au/">QCAA Website</a>
+                <a href="https://www.nudgee.com/">Nudgee College</a>
+                <a href="PROJECT_PLAN.md">Project Plan</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
